@@ -1,7 +1,6 @@
 <?php
-
 function firstUnicodeCharacter($str) {
-    $string = mb_substr(trim($str), 0, 2);
+    $string = mb_substr(trim($str), 0, 1);
     return $string;
 }
 
@@ -170,11 +169,12 @@ function arUnicode() {
 //Example
 header('Content-Type: text/html; charset=utf-8');
 $array = arUnicode();
-$result = array(0 => array('name' => "أحمد"), 2 => array('name' => "اشرف"), 3 => array('name' => "ثومة"),);
+$result = array(0 => array('name' => "أحمد"), 2 => array('name' => "اشرف"), 3 => array('name' => "ثومة"), 4 => array('name' => "ﻛريم"));
 foreach ($array as $key => $val) {
     foreach ($result as $name) {
         if (in_array(firstUnicodeCharacter($name['name']), $val)) {
             $data[$val[0]][] = $name['name'];
+			
         }
     }
 }
